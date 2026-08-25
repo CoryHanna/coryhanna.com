@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practical Salesforce utilities and troubleshooting guides built by CRM Administrator Cory Hanna.">
-  <title>Salesforce Toolbox | Cory Hanna</title>
+  <meta name="description" content="Four practical Salesforce utilities for queries, IDs, CSV cleanup, and permission troubleshooting.">
+  <title>SF Toolbox | Cory Hanna</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -18,7 +18,7 @@
     <nav id="site-nav">
       <a href="index.html#work">WORK</a>
       <a href="index.html#about">ABOUT</a>
-      <a href="salesforce-toolbox.html" aria-current="page">SALESFORCE TOOLBOX</a>
+      <a href="salesforce-toolbox.html" aria-current="page">SF TOOLBOX</a>
       <a href="index.html#resume">RÉSUMÉ</a>
       <a href="index.html#contact">CONTACT</a>
     </nav>
@@ -30,12 +30,12 @@
     <div class="wrap toolbox-hero-grid">
       <div>
         <p class="kicker"><span class="dot"></span> PRACTICAL ADMIN UTILITIES</p>
-        <h1>Salesforce<br><em>Toolbox.</em></h1>
-        <p class="intro">Small, focused tools for the repetitive jobs that slow Salesforce admins down. Built from real problems, documented so the next fix is faster.</p>
+        <h1>SF<br><em>Toolbox.</em></h1>
+        <p class="intro">Four focused tools for the repetitive jobs that slow Salesforce admins down. Everything runs locally in your browser, so your data stays on your device.</p>
       </div>
       <div class="toolbox-count" aria-label="Four tools in the toolbox">
         <strong>04</strong>
-        <span>TOOLS TO START</span>
+        <span>TOOLS READY</span>
       </div>
     </div>
   </section>
@@ -55,54 +55,116 @@
     <div class="wrap">
       <div class="toolbox-heading">
         <h2 id="toolbox-heading">Tools for the<br>work behind the work.</h2>
-        <p>The first set is taking shape now. Each utility will be designed to do one admin task clearly, quickly, and without unnecessary setup.</p>
+        <p>Choose a tool to jump into its workspace. Each one does a single admin job clearly, quickly, and without unnecessary setup.</p>
       </div>
 
       <div class="tool-grid">
-        <article class="tool-card">
-          <div class="tool-card-top"><span class="tool-number">01 / QUERY</span><span class="tool-status">COMING SOON</span></div>
+        <a class="tool-card" href="#soql-builder">
+          <div class="tool-card-top"><span class="tool-number">01 / QUERY</span><span class="tool-status">READY</span></div>
           <div class="tool-mark" aria-hidden="true">SELECT_</div>
           <h3>SOQL Builder</h3>
           <p>Build readable Salesforce Object Query Language statements without losing track of fields, filters, sorting, or limits.</p>
-        </article>
+          <span class="tool-card-link">OPEN TOOL <span aria-hidden="true">↓</span></span>
+        </a>
 
-        <article class="tool-card">
-          <div class="tool-card-top"><span class="tool-number">02 / CONVERT</span><span class="tool-status">COMING SOON</span></div>
+        <a class="tool-card" href="#id-converter">
+          <div class="tool-card-top"><span class="tool-number">02 / CONVERT</span><span class="tool-status">READY</span></div>
           <div class="tool-mark" aria-hidden="true">15 → 18</div>
           <h3>Salesforce ID Converter</h3>
           <p>Convert 15-character record IDs to their case-safe 18-character format for exports, comparisons, and integrations.</p>
-        </article>
+          <span class="tool-card-link">OPEN TOOL <span aria-hidden="true">↓</span></span>
+        </a>
 
-        <article class="tool-card">
-          <div class="tool-card-top"><span class="tool-number">03 / CLEAN</span><span class="tool-status">COMING SOON</span></div>
+        <a class="tool-card" href="#csv-cleaner">
+          <div class="tool-card-top"><span class="tool-number">03 / CLEAN</span><span class="tool-status">READY</span></div>
           <div class="tool-mark" aria-hidden="true">.CSV</div>
           <h3>CSV Cleaner</h3>
           <p>Find common import problems, normalize messy values, and prepare cleaner data before it reaches Data Loader.</p>
-        </article>
+          <span class="tool-card-link">OPEN TOOL <span aria-hidden="true">↓</span></span>
+        </a>
 
-        <article class="tool-card">
-          <div class="tool-card-top"><span class="tool-number">04 / CHECK</span><span class="tool-status">COMING SOON</span></div>
+        <a class="tool-card" href="#permission-checklist">
+          <div class="tool-card-top"><span class="tool-number">04 / CHECK</span><span class="tool-status">READY</span></div>
           <div class="tool-mark" aria-hidden="true">✓ / ×</div>
           <h3>Permission Troubleshooting Checklist</h3>
           <p>Work through a repeatable path for diagnosing object, field, record, app, and system permission issues.</p>
-        </article>
+          <span class="tool-card-link">OPEN TOOL <span aria-hidden="true">↓</span></span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="dark toolbox-note">
-    <div class="wrap toolbox-note-grid">
-      <div class="section-label">WHY THIS EXISTS</div>
-      <div>
-        <h2>Useful beats complicated.</h2>
-        <p>The best admin tools make the next step obvious. This toolbox will grow around practical workflows: less hunting, fewer avoidable errors, and clearer paths through the weird parts of Salesforce.</p>
-      </div>
+  <section class="dark tool-workspaces" aria-label="SF Toolbox utilities">
+    <div class="wrap">
+      <article id="soql-builder" class="tool-panel">
+        <div class="tool-panel-heading">
+          <div><span class="tool-panel-number">01 / QUERY</span><h2>SOQL Builder</h2></div>
+          <p>Build a clean query from the pieces you need. API names are used exactly as entered.</p>
+        </div>
+        <form id="soql-form" class="tool-form">
+          <div class="form-grid">
+            <label>Object API name<input id="soql-object" type="text" value="Account" placeholder="Account" autocomplete="off" required></label>
+            <label>Fields <span class="label-note">comma or line separated</span><textarea id="soql-fields" rows="4" placeholder="Id, Name, Industry" required>Id, Name, Industry</textarea></label>
+            <label class="form-span">WHERE clause <span class="label-note">optional — omit the word WHERE</span><input id="soql-where" type="text" placeholder="Industry = 'Technology'" autocomplete="off"></label>
+            <label>Order by <span class="label-note">optional</span><input id="soql-order" type="text" value="Name" placeholder="Name" autocomplete="off"></label>
+            <label>Direction<select id="soql-direction"><option value="ASC">Ascending</option><option value="DESC">Descending</option></select></label>
+            <label>Limit <span class="label-note">optional</span><input id="soql-limit" type="number" min="1" max="50000" placeholder="200"></label>
+          </div>
+          <div class="tool-actions"><button class="tool-button" type="submit">BUILD QUERY</button><button class="tool-button secondary" id="copy-soql" type="button">COPY</button><span class="action-status" id="soql-status" aria-live="polite"></span></div>
+          <pre class="tool-output"><code id="soql-output">SELECT Id, Name, Industry
+FROM Account
+ORDER BY Name ASC</code></pre>
+        </form>
+      </article>
+
+      <article id="id-converter" class="tool-panel">
+        <div class="tool-panel-heading">
+          <div><span class="tool-panel-number">02 / CONVERT</span><h2>Salesforce ID Converter</h2></div>
+          <p>Paste one or many record IDs. Existing 18-character IDs pass through unchanged.</p>
+        </div>
+        <form id="id-form" class="tool-form two-column-tool">
+          <label>15-character IDs <span class="label-note">one per line, comma, or space</span><textarea id="id-input" rows="8" placeholder="001A0000009z3ZI"></textarea></label>
+          <label>18-character IDs<textarea id="id-output" rows="8" readonly placeholder="Converted IDs appear here"></textarea></label>
+          <div class="tool-actions form-span"><button class="tool-button" type="submit">CONVERT IDS</button><button class="tool-button secondary" id="copy-ids" type="button">COPY</button><span class="action-status" id="id-status" aria-live="polite"></span></div>
+        </form>
+      </article>
+
+      <article id="csv-cleaner" class="tool-panel">
+        <div class="tool-panel-heading">
+          <div><span class="tool-panel-number">03 / CLEAN</span><h2>CSV Cleaner</h2></div>
+          <p>Clean a CSV locally, preview the result, then download a new file. Nothing is uploaded.</p>
+        </div>
+        <div class="tool-form">
+          <label class="file-drop" for="csv-file"><span>CHOOSE A CSV FILE</span><small id="csv-file-name">No file selected</small><input id="csv-file" type="file" accept=".csv,text/csv"></label>
+          <div class="clean-options" role="group" aria-label="CSV cleaning options">
+            <label class="check-option"><input id="trim-cells" type="checkbox" checked><span>Trim whitespace in every cell</span></label>
+            <label class="check-option"><input id="remove-blanks" type="checkbox" checked><span>Remove completely blank rows</span></label>
+            <label class="check-option"><input id="remove-duplicates" type="checkbox"><span>Remove duplicate rows</span></label>
+          </div>
+          <div class="tool-actions"><button class="tool-button" id="clean-csv" type="button" disabled>CLEAN CSV</button><button class="tool-button secondary" id="download-csv" type="button" disabled>DOWNLOAD</button><span class="action-status" id="csv-status" aria-live="polite"></span></div>
+          <pre class="tool-output csv-preview" id="csv-preview">Select a CSV file to preview cleaned data.</pre>
+        </div>
+      </article>
+
+      <article id="permission-checklist" class="tool-panel">
+        <div class="tool-panel-heading">
+          <div><span class="tool-panel-number">04 / CHECK</span><h2>Permission Troubleshooting Checklist</h2></div>
+          <p>Follow the layers in order. Check an item when you have verified it, not simply when it looks correct.</p>
+        </div>
+        <div class="checklist-progress"><div><span id="checklist-count">0 of 12 checked</span><button id="reset-checklist" type="button">RESET</button></div><div class="progress-track"><span id="checklist-bar"></span></div></div>
+        <div class="permission-grid" id="permission-list">
+          <fieldset><legend>01 / USER &amp; LICENSE</legend><label><input type="checkbox"><span>The correct user record is active.</span></label><label><input type="checkbox"><span>The user license supports the feature or object.</span></label><label><input type="checkbox"><span>The expected profile and permission sets are assigned.</span></label></fieldset>
+          <fieldset><legend>02 / OBJECT &amp; FIELD</legend><label><input type="checkbox"><span>Object permission includes the required CRUD access.</span></label><label><input type="checkbox"><span>Field-level security exposes every required field.</span></label><label><input type="checkbox"><span>The record type and page layout include the field or action.</span></label></fieldset>
+          <fieldset><legend>03 / RECORD ACCESS</legend><label><input type="checkbox"><span>Organization-wide defaults allow access or sharing grants it.</span></label><label><input type="checkbox"><span>Role hierarchy, teams, territories, or manual sharing are correct.</span></label><label><input type="checkbox"><span>The user has not lost access because ownership changed.</span></label></fieldset>
+          <fieldset><legend>04 / APP &amp; SYSTEM</legend><label><input type="checkbox"><span>The app, tab, and navigation item are visible.</span></label><label><input type="checkbox"><span>Required system, Apex class, or custom permissions are granted.</span></label><label><input type="checkbox"><span>Restriction rules, login policies, and session settings are not blocking access.</span></label></fieldset>
+        </div>
+      </article>
     </div>
   </section>
 
   <section class="cyan closer">
     <div class="wrap closer-grid">
-      <div><p class="section-label">MORE TOOLS ARE ON THE WAY.</p><h2>Keep building.</h2></div>
+      <div><p class="section-label">FOUR TOOLS. ONE LESS HEADACHE.</p><h2>Keep building.</h2></div>
       <a href="#top">BACK TO TOP ↑</a>
     </div>
   </section>
@@ -115,5 +177,6 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script src="toolbox.js"></script>
 </body>
 </html>

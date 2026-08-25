@@ -491,7 +491,7 @@ nav a[aria-current="page"] {
     letter-spacing: .08em
 }
 
-/* Salesforce Toolbox */
+/* SF Toolbox */
 .toolbox-hero {
     padding: 82px 0 76px
 }
@@ -644,6 +644,361 @@ nav a[aria-current="page"] {
     color: #aeb6b8
 }
 
+.tool-card-link {
+    margin-top: 24px;
+    color: #4f595c;
+    font: 600 .59rem "IBM Plex Mono", monospace;
+    letter-spacing: .1em
+}
+
+.tool-card-link span {
+    margin-left: 10px;
+    color: var(--orange)
+}
+
+.tool-card:hover .tool-card-link {
+    color: var(--cyan)
+}
+
+.tool-workspaces {
+    padding: 28px 0 110px;
+    scroll-margin-top: 74px
+}
+
+.tool-panel {
+    padding: 82px 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 74px
+}
+
+.tool-panel:last-child {
+    border-bottom: 0;
+    padding-bottom: 0
+}
+
+.tool-panel-heading {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 70px;
+    align-items: end;
+    margin-bottom: 38px
+}
+
+.tool-panel-heading h2 {
+    margin: 10px 0 0;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: .96;
+    letter-spacing: -.055em;
+    font-weight: 500
+}
+
+.tool-panel-heading p {
+    margin: 0;
+    color: #a0a9ab;
+    font-size: .84rem;
+    line-height: 1.65
+}
+
+.tool-panel-number {
+    color: var(--cyan);
+    font: 600 .6rem "IBM Plex Mono", monospace;
+    letter-spacing: .13em
+}
+
+.tool-form {
+    padding: 38px;
+    border: 1px solid #344047;
+    background: #0c161a
+}
+
+.tool-form label {
+    display: block;
+    color: #d9dddc;
+    font: 600 .65rem "IBM Plex Mono", monospace;
+    letter-spacing: .06em
+}
+
+.label-note {
+    color: #748084;
+    font-weight: 400;
+    letter-spacing: 0
+}
+
+.tool-form input[type="text"],
+.tool-form input[type="number"],
+.tool-form textarea,
+.tool-form select {
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px 14px;
+    border: 1px solid #344047;
+    border-radius: 0;
+    outline: 0;
+    background: var(--dark);
+    color: #f2f2ef;
+    font: 400 .8rem "IBM Plex Mono", monospace;
+    transition: border-color .2s ease
+}
+
+.tool-form textarea {
+    resize: vertical;
+    line-height: 1.55
+}
+
+.tool-form input:focus,
+.tool-form textarea:focus,
+.tool-form select:focus {
+    border-color: var(--cyan)
+}
+
+.tool-form textarea[readonly] {
+    color: var(--cyan)
+}
+
+.form-grid,
+.two-column-tool {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px
+}
+
+.form-grid {
+    grid-template-columns: 1fr 1fr 1fr
+}
+
+.form-grid label:nth-child(2) {
+    grid-column: span 2
+}
+
+.form-span {
+    grid-column: 1 / -1
+}
+
+.tool-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    flex-wrap: wrap
+}
+
+.two-column-tool .tool-actions {
+    margin-top: 0
+}
+
+.tool-button {
+    padding: 13px 17px;
+    border: 1px solid var(--cyan);
+    background: var(--cyan);
+    color: var(--ink);
+    cursor: pointer;
+    font: 700 .61rem "IBM Plex Mono", monospace;
+    letter-spacing: .09em
+}
+
+.tool-button:hover {
+    background: #65e8f7
+}
+
+.tool-button.secondary {
+    background: transparent;
+    color: var(--cyan)
+}
+
+.tool-button.secondary:hover {
+    background: rgba(40, 215, 238, .08)
+}
+
+.tool-button:disabled {
+    border-color: #465156;
+    background: #252f33;
+    color: #758084;
+    cursor: not-allowed
+}
+
+.action-status {
+    min-height: 1em;
+    margin-left: 4px;
+    color: #9aa5a8;
+    font: 500 .6rem "IBM Plex Mono", monospace
+}
+
+.action-status.error {
+    color: #ff8967
+}
+
+.tool-output {
+    min-height: 82px;
+    margin: 24px 0 0;
+    padding: 20px;
+    overflow: auto;
+    border-left: 3px solid var(--orange);
+    background: var(--dark);
+    color: var(--cyan);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: 400 .78rem/1.65 "IBM Plex Mono", monospace
+}
+
+.file-drop {
+    padding: 34px;
+    text-align: center;
+    border: 1px dashed #4a5a60;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease
+}
+
+.file-drop:hover,
+.file-drop:focus-within {
+    border-color: var(--cyan);
+    background: rgba(40, 215, 238, .04)
+}
+
+.file-drop span {
+    display: block;
+    color: var(--cyan)
+}
+
+.file-drop small {
+    display: block;
+    margin-top: 10px;
+    color: #849094;
+    font: 400 .7rem Inter, Arial, sans-serif;
+    letter-spacing: 0
+}
+
+.file-drop input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap
+}
+
+.clean-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 24px;
+    background: #344047;
+    border: 1px solid #344047
+}
+
+.tool-form .check-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    min-height: 74px;
+    padding: 20px;
+    background: #0c161a;
+    cursor: pointer;
+    font-family: Inter, Arial, sans-serif;
+    font-size: .76rem;
+    line-height: 1.45;
+    letter-spacing: 0
+}
+
+.check-option input,
+.permission-grid input {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    accent-color: var(--cyan)
+}
+
+.csv-preview {
+    max-height: 280px;
+    color: #b9c1c2
+}
+
+.checklist-progress {
+    margin-bottom: 24px
+}
+
+.checklist-progress>div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #b5bdbe;
+    font: 600 .62rem "IBM Plex Mono", monospace;
+    letter-spacing: .07em
+}
+
+.checklist-progress button {
+    padding: 0 0 4px;
+    border: 0;
+    border-bottom: 1px solid #697579;
+    background: transparent;
+    color: #899497;
+    cursor: pointer;
+    font: 600 .58rem "IBM Plex Mono", monospace;
+    letter-spacing: .08em
+}
+
+.checklist-progress button:hover {
+    color: var(--cyan);
+    border-color: var(--cyan)
+}
+
+.progress-track {
+    height: 4px;
+    margin-top: 12px;
+    background: #263137
+}
+
+.progress-track span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--cyan);
+    transition: width .2s ease
+}
+
+.permission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    border: 1px solid #344047;
+    background: #344047
+}
+
+.permission-grid fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 26px;
+    border: 0;
+    background: #0c161a
+}
+
+.permission-grid legend {
+    float: left;
+    width: 100%;
+    margin: 0 0 22px;
+    color: var(--orange);
+    font: 600 .61rem "IBM Plex Mono", monospace;
+    letter-spacing: .1em
+}
+
+.permission-grid label {
+    clear: both;
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid #253137;
+    color: #b7bfc0;
+    cursor: pointer;
+    font-size: .78rem;
+    line-height: 1.5
+}
+
+.permission-grid label:has(input:checked) span {
+    color: #6f7a7d;
+    text-decoration: line-through
+}
+
 .toolbox-note {
     padding: 82px 0
 }
@@ -735,6 +1090,19 @@ nav a[aria-current="page"] {
 
     .toolbox-count {
         max-width: 150px
+    }
+
+    .tool-panel-heading {
+        grid-template-columns: 1fr;
+        gap: 20px
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .form-grid label:nth-child(2) {
+        grid-column: auto
     }
 
     .hero-right {
@@ -842,6 +1210,38 @@ nav a[aria-current="page"] {
     .tool-card {
         min-height: 300px;
         padding: 28px 24px
+    }
+
+    .tool-workspaces {
+        padding-bottom: 82px
+    }
+
+    .tool-panel {
+        padding: 68px 0
+    }
+
+    .tool-form {
+        padding: 24px 18px
+    }
+
+    .form-grid,
+    .two-column-tool,
+    .clean-options,
+    .permission-grid {
+        grid-template-columns: 1fr
+    }
+
+    .form-grid label:nth-child(2),
+    .form-span {
+        grid-column: auto
+    }
+
+    .two-column-tool .tool-actions {
+        margin-top: 0
+    }
+
+    .tool-button {
+        flex: 1 1 auto
     }
 }
 
