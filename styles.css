@@ -73,6 +73,10 @@ nav a:hover {
     color: var(--cyan)
 }
 
+nav a[aria-current="page"] {
+    color: var(--cyan)
+}
+
 .menu-toggle {
     display: none;
     width: 42px;
@@ -487,6 +491,185 @@ nav a:hover {
     letter-spacing: .08em
 }
 
+/* Salesforce Toolbox */
+.toolbox-hero {
+    padding: 82px 0 76px
+}
+
+.toolbox-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 56px;
+    align-items: end
+}
+
+.toolbox-hero h1 {
+    max-width: 880px;
+    margin: 25px 0 30px;
+    font-size: clamp(4rem, 8vw, 7.3rem);
+    line-height: .9;
+    letter-spacing: -.07em;
+    font-weight: 900
+}
+
+.toolbox-hero h1 em {
+    color: var(--orange);
+    font-family: "Playfair Display", serif;
+    font-size: .92em;
+    font-weight: 500
+}
+
+.toolbox-count {
+    min-width: 150px;
+    padding: 19px 0 3px;
+    border-top: 1px solid #344047
+}
+
+.toolbox-count strong {
+    display: block;
+    color: var(--cyan);
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -.06em
+}
+
+.toolbox-count span {
+    font: 600 .6rem "IBM Plex Mono", monospace;
+    letter-spacing: .14em;
+    color: var(--muted)
+}
+
+.toolbox-section {
+    padding: 92px 0 112px
+}
+
+.toolbox-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 26px
+}
+
+.toolbox-heading h2 {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.7rem);
+    line-height: .96;
+    letter-spacing: -.055em;
+    font-weight: 500
+}
+
+.toolbox-heading p {
+    max-width: 390px;
+    margin: 0;
+    color: #626a6c;
+    font-size: .85rem;
+    line-height: 1.6
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--paper-line);
+    border-left: 1px solid var(--paper-line)
+}
+
+.tool-card {
+    min-height: 330px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--paper-line);
+    border-bottom: 1px solid var(--paper-line);
+    transition: background .2s ease, color .2s ease
+}
+
+.tool-card:hover {
+    background: var(--ink);
+    color: #f2f2ef
+}
+
+.tool-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start
+}
+
+.tool-number,
+.tool-status {
+    font: 600 .58rem "IBM Plex Mono", monospace;
+    letter-spacing: .1em
+}
+
+.tool-number {
+    color: #778083
+}
+
+.tool-status {
+    color: #0e7380;
+    border: 1px solid #8cb9bf;
+    padding: 5px 7px
+}
+
+.tool-card:hover .tool-status {
+    color: var(--cyan);
+    border-color: var(--cyan)
+}
+
+.tool-mark {
+    margin: auto 0 22px;
+    color: var(--orange);
+    font: 500 2.4rem "IBM Plex Mono", monospace;
+    letter-spacing: -.1em
+}
+
+.tool-card h3 {
+    margin: 0 0 12px;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    line-height: 1.05;
+    letter-spacing: -.045em;
+    font-weight: 600
+}
+
+.tool-card p {
+    max-width: 470px;
+    margin: 0;
+    color: #697174;
+    font-size: .78rem;
+    line-height: 1.55
+}
+
+.tool-card:hover p {
+    color: #aeb6b8
+}
+
+.toolbox-note {
+    padding: 82px 0
+}
+
+.toolbox-note-grid {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 52px
+}
+
+.toolbox-note h2 {
+    max-width: 820px;
+    margin: 0 0 28px;
+    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+    line-height: .96;
+    letter-spacing: -.06em;
+    font-weight: 500
+}
+
+.toolbox-note p {
+    max-width: 660px;
+    color: #a1aaac;
+    line-height: 1.65;
+    font-size: .9rem
+}
+
 @media(max-width:900px) {
     .nav-wrap {
         position: relative
@@ -544,8 +727,14 @@ nav a:hover {
     .split-section,
     .resume-block,
     .now-grid,
-    .closer-grid {
+    .closer-grid,
+    .toolbox-hero-grid,
+    .toolbox-note-grid {
         grid-template-columns: 1fr
+    }
+
+    .toolbox-count {
+        max-width: 150px
     }
 
     .hero-right {
@@ -624,6 +813,35 @@ nav a:hover {
     .footer-grid {
         flex-direction: column;
         gap: 8px
+    }
+
+    .toolbox-hero {
+        padding: 54px 0 58px
+    }
+
+    .toolbox-hero h1 {
+        font-size: clamp(3.35rem, 17vw, 5rem)
+    }
+
+    .toolbox-section {
+        padding: 70px 0 82px
+    }
+
+    .toolbox-heading {
+        display: block
+    }
+
+    .toolbox-heading p {
+        margin-top: 20px
+    }
+
+    .tool-grid {
+        grid-template-columns: 1fr
+    }
+
+    .tool-card {
+        min-height: 300px;
+        padding: 28px 24px
     }
 }
 
