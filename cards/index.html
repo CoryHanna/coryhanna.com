@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sharpen — a card a day</title>
+<style>
+  :root{
+    --paper:#EDEAE1;
+    --paper-line:#D9D4C6;
+    --ink:#2B2A26;
+    --ink-soft:#6B675C;
+    --accent:#2F6F63;
+    --accent-soft:#E4EFE9;
+    --amber:#C1852B;
+    --card-shadow: 2px 3px 0 rgba(43,42,38,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:transparent;
+    font-family: 'Iowan Old Style','Georgia',serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    padding:24px 16px 40px;
+  }
+  .wrap{ width:100%; max-width:520px; }
+
+  header{ margin-bottom:18px; }
+  .kicker{
+    font-family: Georgia, serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+    margin:0 0 2px;
+  }
+  h1{
+    font-size:26px;
+    margin:0 0 4px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+    line-height:1.5;
+  }
+
+  .tabs{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin:20px 0 16px;
+  }
+  .tab{
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:12.5px;
+    padding:7px 12px;
+    border:1px solid var(--paper-line);
+    border-radius:3px 3px 0 0;
+    background:#E4E0D5;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:background 0.15s, color 0.15s;
+    border-bottom:2px solid var(--paper-line);
+  }
+  .tab.active{
+    background:var(--paper);
+    color:var(--ink);
+    border-bottom:2px solid var(--accent);
+    font-weight:600;
+  }
+  .tab:hover:not(.active){ background:#DFDBCF; }
+
+  .deck-area{
+    position:relative;
+    min-height:230px;
+  }
+
+  .card{
+    background:
+      linear-gradient(var(--paper) 0px, var(--paper) 27px, var(--paper-line) 28px, var(--paper) 29px);
+    background-size: 100% 29px;
+    border:1px solid var(--paper-line);
+    border-radius:2px;
+    box-shadow: var(--card-shadow);
+    padding:26px 24px 22px;
+    min-height:210px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(6px);
+  }
+  .card.show{
+    animation: settle 0.32s ease forwards;
+  }
+  @keyframes settle{
+    from{ opacity:0; transform:translateY(10px) rotate(-0.4deg); }
+    to{ opacity:1; transform:translateY(0) rotate(0deg); }
+  }
+
+  .card-tag{
+    display:inline-block;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:11px;
+    font-weight:600;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:3px 8px;
+    border-radius:2px;
+    width:fit-content;
+    margin-bottom:14px;
+  }
+  .card-text{
+    font-size:19px;
+    line-height:29px;
+    margin:0;
+  }
+  .card-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    padding-top:12px;
+    border-top:1px dashed var(--paper-line);
+  }
+  .card-meta{
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+  .done-btn{
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:12.5px;
+    background:none;
+    border:1px solid var(--paper-line);
+    color:var(--ink-soft);
+    padding:5px 11px;
+    border-radius:3px;
+    cursor:pointer;
+    transition: all 0.15s;
+  }
+  .done-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .done-btn.done{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+
+  .empty{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:210px;
+    border:1px dashed var(--paper-line);
+    border-radius:2px;
+    color:var(--ink-soft);
+    font-size:14px;
+    text-align:center;
+    padding:20px;
+  }
+
+  .controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:18px;
+  }
+  .pull-btn{
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    padding:11px 20px;
+    border-radius:3px;
+    cursor:pointer;
+    transition: transform 0.1s;
+  }
+  .pull-btn:active{ transform: scale(0.97); }
+  .pull-btn:hover{ background:#3d3b35; }
+
+  .tally{
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .tally b{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">a card a day</p>
+    <h1>Sharpen</h1>
+    <p class="sub">Pull one card, do the thing, move on. No app to check, no streak to protect — just a small rep for your brain.</p>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="deck-area" id="deckArea">
+    <div class="empty">Pick a category above (or leave on "All") and pull a card.</div>
+  </div>
+
+  <div class="controls">
+    <button class="pull-btn" id="pullBtn">Pull a card</button>
+    <div class="tally" id="tally">0 pulled this session</div>
+  </div>
+</div>
+
+<script>
+const deck = {
+  "Quick reps": [
+    "Recall 5 things you did yesterday, in order, no notes.",
+    "Pick an object within reach. List 10 uses for it that aren't its normal use.",
+    "Do the next bit of math in your head instead of reaching for a calculator.",
+    "Name every country you can think of starting with the letter your first name starts with.",
+    "Count backwards from 100 by 7s as far as you can."
+  ],
+  "Systems": [
+    "Pick one process at work and explain it out loud like you're training a new hire.",
+    "Take a system you use daily and ask: what's the one thing that would break it?",
+    "Sketch the steps of a routine task from memory before you do it, then compare.",
+    "Find one manual step in something you do often and figure out how you'd automate it.",
+    "Explain how a tool you use daily actually works under the hood, to no one in particular."
+  ],
+  "Creative": [
+    "Free-write for 3 minutes on whatever's in front of you. No editing, no stopping.",
+    "Learn one new word right now and use it in conversation today.",
+    "Describe your current surroundings using only sounds and smells, no sight.",
+    "Come up with 3 alternate titles for whatever you're currently working on.",
+    "Invent a one-sentence story using the last 3 things you touched."
+  ],
+  "Memory": [
+    "Retrace your morning so far in reverse order, step by step.",
+    "Name something you're grateful for that you haven't used as an answer before.",
+    "Picture your route somewhere familiar and count the turns without looking.",
+    "Recall the last conversation you had — what were the first and last things said?",
+    "List everything on your desk right now, then check what you missed."
+  ]
+};
+
+const categories = ["All", ...Object.keys(deck)];
+let active = "All";
+let pulledCount = 0;
+let lastCard = null;
+
+const tabsEl = document.getElementById('tabs');
+const deckArea = document.getElementById('deckArea');
+const tally = document.getElementById('tally');
+const pullBtn = document.getElementById('pullBtn');
+
+function renderTabs(){
+  tabsEl.innerHTML = '';
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (cat === active ? ' active' : '');
+    btn.textContent = cat;
+    btn.onclick = () => { active = cat; renderTabs(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function pool(){
+  if(active === 'All'){
+    return Object.entries(deck).flatMap(([cat, items]) => items.map(text => ({cat, text})));
+  }
+  return deck[active].map(text => ({cat: active, text}));
+}
+
+function pull(){
+  const p = pool();
+  let choice;
+  do {
+    choice = p[Math.floor(Math.random() * p.length)];
+  } while (p.length > 1 && lastCard && choice.text === lastCard.text);
+  lastCard = choice;
+  pulledCount++;
+  tally.innerHTML = `<b>${pulledCount}</b> pulled this session`;
+  renderCard(choice);
+}
+
+function renderCard(choice){
+  deckArea.innerHTML = '';
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div>
+      <span class="card-tag">${choice.cat}</span>
+      <p class="card-text">${choice.text}</p>
+    </div>
+    <div class="card-foot">
+      <span class="card-meta">card ${pulledCount}</span>
+      <button class="done-btn" id="doneBtn">Mark done</button>
+    </div>
+  `;
+  deckArea.appendChild(card);
+  requestAnimationFrame(() => card.classList.add('show'));
+
+  document.getElementById('doneBtn').onclick = (e) => {
+    e.target.classList.toggle('done');
+    e.target.textContent = e.target.classList.contains('done') ? 'Done ✓' : 'Mark done';
+  };
+}
+
+pullBtn.onclick = pull;
+renderTabs();
+</script>
+</body>
+</html>
